@@ -1,4 +1,4 @@
-.accordion {
+.accordionMobile {
      background-color: #f8f8f8;
      color: #444;
      cursor: pointer;
@@ -14,12 +14,12 @@
      overflow: paged-y;
      box-shadow: 0 0 2px 0 rgba(57, 78, 234, 0.1)
  }
- .active, .accordion:hover {
+ .active, .accordionMobile:hover {
      color: #ffffff;
      font-weight: 400;
      background-color: #051b35;
  }
- .accordion:after {
+ .accordionMobile:after {
      content: '\276F';
      color: #c2c2c2;
      float: right;
@@ -29,14 +29,14 @@
      color: #ffffff;
      content: "\276E";
  }
- .panel {
+ .panelMobile {
      padding: 0 10px;
      background-color: white;
      max-height: 0;
      overflow: hidden;
      transition: max-height 0.2s ease-out;
  }
- .accordionMenuDiv{
+ .accordionMenuDivMobile{
      width: 100%;
      direction:rtl;
      font-family: 'Roboto Condensed', sans-serif !important;
@@ -48,34 +48,34 @@
      scrollbar-color: #e9e9e9 #ffffff;
  }
  
- .accordionMenuDiv::-webkit-scrollbar {
+ .accordionMenuDivMobile::-webkit-scrollbar {
      width:10px !important;
  }
  
- .accordionMenuDiv::-webkit-scrollbar-thumb {
+ .accordionMenuDivMobile::-webkit-scrollbar-thumb {
      background: #dedede !important;
  }
  
- .accordionMenuDiv::-webkit-scrollbar-thumb:hover {
+ .accordionMenuDivMobile::-webkit-scrollbar-thumb:hover {
      background: #808080 !important;
  }
  
- .accordionMenuDiv::-webkit-scrollbar-track {
+ .accordionMenuDivMobile::-webkit-scrollbar-track {
      background: #F4F4F4!important;
  }
  
  
- .accordionMenuDivInside{
+ .accordionMenuDivInsideMobile{
      direction:ltr;
  }
- .accordionMenuIcon{
+ .accordionMenuIconMobile{
      width: 20px;
      height: auto;
  }
- .accordionItem{
+ .accordionItemMobile{
      color: #444;
      text-decoration: none;
  }
- .accordionItem:hover{
+ .accordionItemMobile:hover{
      text-decoration: none;
  }
