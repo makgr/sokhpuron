@@ -51,6 +51,7 @@ class NavMenuDesktop extends Component {
                   <Button onClick={this.MenuBarClickHandler} className="btn"><i className="fa fa-bars"></i>  </Button>
 
                   <Link to="/"> <img className="nav-logo" src={Logo} /> </Link>
+
                 </Col>
 
                 <Col className="p-1 mt-1" lg={4} md={4} sm={12} xs={12}>
@@ -69,7 +70,7 @@ class NavMenuDesktop extends Component {
                   <Link to="/" className="btn"><i className="fa h4 fa-bell"></i><sup><span className="badge text-white bg-danger">5</span></sup>
                   </Link>
                   <a className="btn"><i className="fa h4 fa-mobile-alt"></i></a>
-                  <Link to="/" className="h4 btn">LOGIN</Link>
+                  <Link to="/login" className="h4 btn">LOGIN</Link>
 
                   <Button className="cart-btn"><i className="fa fa-shopping-cart"></i> 3 Items </Button>
                 </Col>
