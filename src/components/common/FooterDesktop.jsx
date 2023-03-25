@@ -40,6 +40,8 @@ class FooterDesktop extends Component {
                 <h5 className="footer-menu-title">Download Apps</h5>
                 <a><img src={Google} /></a><br></br>
                 <a><img className="mt-2" src={Apple} /></a><br></br>
+                Change Your Language <br></br>
+                <div id="google_translate_element">  </div>
               </Col>
 
             </Row>
