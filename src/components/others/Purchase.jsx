@@ -3,6 +3,8 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import AppURL from '../../api/AppURL';
 import axios from 'axios'
 import parse from 'html-react-parser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export class Purchase extends Component {
      constructor() {
@@ -13,16 +15,36 @@ export class Purchase extends Component {
      }
 
      componentDidMount() {
-          axios.get(AppURL.AllSiteInfo).then(response => {
-               let StatusCode = response.status;
-               if (StatusCode == 200) {
-                    let JsonData = (response.data)[0]['parchase_guide'];
-                    this.setState({ purchase: JsonData });
-               }
+          let SiteInfoPurchase = sessionStorage.getItem("AllSiteInfo");
 
-          }).catch(error => {
+          if (SiteInfoPurchase == null) {
 
-          });
+               axios.get(AppURL.AllSiteInfo).then(response => {
+                    let StatusCode = response.status;
+                    if (StatusCode == 200) {
+                         let JsonData = (response.data)[0]['parchase_guide'];
+                         this.setState({ purchase: JsonData });
+
+                         sessionStorage.setItem("SiteInfoPurchase", JsonData)
+                    }
+                    else {
+                         toast.error("Somthing Went Wrong.", {
+                              position: "bottom-center"
+                         });
+                    }
+
+
+               }).catch(error => {
+                    toast.error("Somthing Went Wrong.", {
+                         position: "bottom-center"
+                    });
+               });
+
+          }  // end If Conditon 
+          else {
+               this.setState({ purchase: SiteInfoPurchase });
+          }
+
      }
 
      render() {
@@ -40,6 +62,18 @@ export class Purchase extends Component {
                               </Col>
                          </Row>
                     </Container>
+                    <ToastContainer
+                         position="top-right"
+                         autoClose={5000}
+                         hideProgressBar={false}
+                         newestOnTop={false}
+                         closeOnClick
+                         rtl={false}
+                         pauseOnFocusLoss
+                         draggable
+                         pauseOnHover
+                         theme="colored"
+                    />
                </Fragment>
           )
      }
