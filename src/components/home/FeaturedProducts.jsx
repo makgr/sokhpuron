@@ -1,75 +1,98 @@
 import React, { Component, Fragment } from 'react'
-import { Button, Card, Col, Container, Row } from 'react-bootstrap'
+import { Container, Row, Col, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import AppURL from '../../api/AppURL';
+import axios from 'axios'
+import FeaturedLoading from '../PlaceHolder/FeaturedLoading';
 
 class FeaturedProducts extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            ProductData: [],
+            isLoading: "",
+            mainDiv: "d-none"
+
+        }
+    }
+
+
+    componentDidMount() {
+        axios.get(AppURL.ProductListByRemark("FEATURED")).then(response => {
+
+            this.setState({
+                ProductData: response.data, isLoading: "d-none",
+                mainDiv: " "
+            });
+
+        }).catch(error => {
+
+        });
+    }
+
+
     render() {
+
+        const FeaturedList = this.state.ProductData;
+        const MyView = FeaturedList.map((FeaturedList, i) => {
+
+            if (FeaturedList.special_price == "na") {
+                return <Col className="p-1" key={1} xl={2} lg={2} md={2} sm={4} xs={6}>
+                    <Link className="text-link" to={"/productdetails/" + FeaturedList.id} >
+                        <Card className="image-box card">
+                            <img className="center" src={FeaturedList.image} />
+                            <Card.Body>
+                                <p className="product-name-on-card">{FeaturedList.title}</p>
+                                <p className="product-price-on-card">Price : ${FeaturedList.price}</p>
+
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                </Col>
+
+            }
+            else {
+
+                return <Col className="p-1" key={1} xl={2} lg={2} md={2} sm={4} xs={6}>
+                    <Link className="text-link" to={"/productdetails/" + FeaturedList.id} >
+                        <Card className="image-box card">
+                            <img className="center" src={FeaturedList.image} />
+                            <Card.Body>
+                                <p className="product-name-on-card">{FeaturedList.title}</p>
+                                <p className="product-price-on-card">Price : <strike className="text-secondary">${FeaturedList.price}</strike> ${FeaturedList.special_price}</p>
+
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                </Col>
+
+            }
+
+
+        });
+
+
         return (
             <Fragment>
-                <Container className='text-center' fluid={true}>
-                    <div className='section-title text-center mb-55'>
-                        <h2>Featured Products</h2>
-                        <p>Our exclusive colleciton.</p>
-                    </div>
-                    <Row>
-                        <Col className="p-1" key={1} xl={2} lg={2} sm={4} xs={6}>
-                            <Link to="/productdetails">
-                                <Card className='image-box card'>
-                                    <img className="center" src="https://burst.shopifycdn.com/photos/grooms-prep-kit-for-wedding.jpg?width=925&format=pjpg&exif=1&iptc=1" alt="product-image" />
-                                    <Card.Body>
-                                        <p className="product-name-on-card">Watch for groom</p>
-                                        <p className="product-price-on-card">Price : $120</p>
-                                    </Card.Body>
-                                </Card>
-                            </Link>
-                        </Col>
-                        <Col className="p-1" key={1} xl={2} lg={2} sm={4} xs={6}>
-                            <Card className='image-box card'>
-                                <img className="center" src="https://burst.shopifycdn.com/photos/gemstone-necklace.jpg?width=925&format=pjpg&exif=1&iptc=1" alt="product-image" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Watch for groom</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col className="p-1" key={1} xl={2} lg={2} sm={4} xs={6}>
-                            <Card className='image-box card'>
-                                <img className="center" src="https://burst.shopifycdn.com/photos/gold-ring-with-white-dimonds-and-a-large-stone.jpg?width=373&format=pjpg&exif=1&iptc=1" alt="product-image" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Watch for groom</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col className="p-1" key={1} xl={2} lg={2} sm={4} xs={6}>
-                            <Card className='image-box card'>
-                                <img className="center" src="https://burst.shopifycdn.com/photos/slow-fashion-coat.jpg?width=373&format=pjpg&exif=1&iptc=1" alt="product-image" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Watch for groom</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col className="p-1" key={1} xl={2} lg={2} sm={4} xs={6}>
-                            <Card className='image-box card'>
-                                <img className="center" src="https://burst.shopifycdn.com/photos/black-and-white-sneakers-against-purple-and-white.jpg?width=373&format=pjpg&exif=1&iptc=1" alt="product-image" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Watch for groom</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col className="p-1" key={1} xl={2} lg={2} sm={4} xs={6}>
-                            <Card className='image-box card'>
-                                <img className="center" src="https://burst.shopifycdn.com/photos/beauty-set.jpg?width=373&format=pjpg&exif=1&iptc=1" alt="product-image" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Watch for groom</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-                </Container>
+
+                <FeaturedLoading isLoading={this.state.isLoading} />
+
+                <div className={this.state.mainDiv}>
+                    <Container className="text-center" fluid={true}>
+                        <div className="section-title text-center mb-55"><h2>FEATURED PRODUCT</h2>
+                            <p>Some Of Our Exclusive Collection, You May Like</p>
+                        </div>
+
+
+                        <Row>
+                            {MyView}
+
+                        </Row>
+
+
+                    </Container>
+                </div>
             </Fragment>
         )
     }

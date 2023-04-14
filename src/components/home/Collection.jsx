@@ -1,119 +1,94 @@
 import React, { Component, Fragment } from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap'
+import AppURL from '../../api/AppURL';
+import axios from 'axios'
+import CollectionLoading from '../PlaceHolder/CollectionLoading';
+import { Link } from 'react-router-dom'
 
 class Collection extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            ProductData: [],
+            isLoading: "",
+            mainDiv: "d-none"
+        }
+    }
+
+
+    componentDidMount() {
+        axios.get(AppURL.ProductListByRemark("COLLECTION")).then(response => {
+
+            this.setState({
+                ProductData: response.data, isLoading: "d-none",
+                mainDiv: " "
+            });
+
+        }).catch(error => {
+
+        });
+    }
+
+
     render() {
+
+        const CollectionList = this.state.ProductData;
+        const MyView = CollectionList.map((CollectionList, i) => {
+
+            if (CollectionList.special_price == "na") {
+                return <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
+                    <Link className="text-link" to={"/productdetails/" + CollectionList.id} >
+                        <Card className="image-box card w-100">
+                            <img className="center w-75" src={CollectionList.image} />
+                            <Card.Body>
+                                <p className="product-name-on-card">{CollectionList.title}</p>
+                                <p className="product-price-on-card">Price : ${CollectionList.price}</p>
+
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                </Col>
+
+            }
+            else {
+
+                return <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
+                    <Link className="text-link" to={"/productdetails/" + CollectionList.id} >
+                        <Card className="image-box card w-100">
+                            <img className="center w-75" src={CollectionList.image} />
+                            <Card.Body>
+                                <p className="product-name-on-card">{CollectionList.title}</p>
+                                <p className="product-price-on-card">Price : <strike className="text-secondary">${CollectionList.price}</strike> ${CollectionList.special_price}</p>
+
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                </Col>
+
+            }
+
+        });
+
+
+
+
         return (
             <Fragment>
-                <Container className="text-center" fluid={true}>
-                    <div className="section-title text-center mb-55"><h2> PRODUCT COLLECTION</h2>
-                        <p>Our Exclusive Collection</p>
-                    </div>
+                <CollectionLoading isLoading={this.state.isLoading} />
 
-                    <Row>
-                        <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
-                            <Card className="image-box card w-100">
-                                <img className="center w-75" src="https://burst.shopifycdn.com/photos/profile-of-a-person-in-black-tee.jpg?width=373&format=pjpg&exif=1&iptc=1" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Striped Men Hooded Neck Red</p>
-                                    <p className="product-price-on-card">Price : $120</p>
+                <div className={this.state.mainDiv}>
 
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                    <Container className="text-center" fluid={true}>
+                        <div className="section-title text-center mb-55"><h2> PRODUCT COLLECTION</h2>
+                            <p>Some Of Our Exclusive Collection, You May Like</p>
+                        </div>
 
-
-                        <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
-                            <Card className="image-box card w-100">
-                                <img className="center w-75" src="https://burst.shopifycdn.com/photos/person-ruffling-their-hair-portrait.jpg?width=373&format=pjpg&exif=1&iptc=1" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Striped Men Round Neck Maroon, Grey</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-
-
-                        <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
-                            <Card className="image-box card w-100">
-                                <img className="center w-75" src="https://burst.shopifycdn.com/photos/teen-fashion-hoodie-with-urban-neon.jpg?width=373&format=pjpg&exif=1&iptc=1" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Color Block Men Round Neck Grey</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-
-
-                        <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
-                            <Card className="image-box card w-100">
-                                <img className="center w-75" src="https://burst.shopifycdn.com/photos/moody-image-of-a-person-in-grey-hooded-sweater.jpg?width=373&format=pjpg&exif=1&iptc=1" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Printed Men Hooded Neck Red T-Shirt</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-
-                        <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
-                            <Card className="image-box card w-100">
-                                <img className="center w-75" src="https://burst.shopifycdn.com/photos/urban-mens-fashion-on-young-adult.jpg?width=373&format=pjpg&exif=1&iptc=1" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Printed Men Hooded Neck Red T-Shirt</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-
-
-                        <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
-                            <Card className="image-box card w-100">
-                                <img className="center w-75" src="https://burst.shopifycdn.com/photos/portrait-of-man-in-grey-and-blue.jpg?width=373&format=pjpg&exif=1&iptc=1" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Printed Men Hooded Neck Red T-Shirt</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-
-
-                        <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
-                            <Card className="image-box card w-100">
-                                <img className="center w-75" src="https://burst.shopifycdn.com/photos/black-bag-with-school-supplies-falling-out-of-it.jpg?width=373&format=pjpg&exif=1&iptc=1" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Printed Men Hooded Neck Red T-Shirt</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-
-
-                        <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
-                            <Card className="image-box card w-100">
-                                <img className="center w-75" src="https://burst.shopifycdn.com/photos/a-pile-of-denim-jeans-in-different-shades-of-blue.jpg?width=373&format=pjpg&exif=1&iptc=1" />
-                                <Card.Body>
-                                    <p className="product-name-on-card">Printed Men Hooded Neck Red T-Shirt</p>
-                                    <p className="product-price-on-card">Price : $120</p>
-
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-
-                    </Row>
-                </Container>
+                        <Row>
+                            {MyView}
+                        </Row>
+                    </Container>
+                </div>
             </Fragment>
         )
     }
