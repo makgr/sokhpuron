@@ -4,10 +4,10 @@ import Product1 from '../../assets/images/product/product1.png'
 import ReactDOM from 'react-dom'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import { Link, Redirect } from 'react-router-dom'
-// import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
-// import InnerImageZoom from 'react-inner-image-zoom';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+import InnerImageZoom from 'react-inner-image-zoom';
 import SuggestedProduct from './SuggestedProduct'
-// import ReviewList from './ReviewList'
+import ReviewList from './ReviewList'
 // import cogoToast from 'cogo-toast';
 import AppURL from '../../api/AppURL'
 import axios from 'axios'
@@ -350,7 +350,7 @@ class ProductDetails extends Component {
 
 
 
-                                             {/* <InnerImageZoom className="detailimage" zoomScale={1.8} zoomType={"hover"} src={this.state.previewImg} zoomSrc={this.state.previewImg} /> */}
+                                             <InnerImageZoom className="detailimage" zoomScale={1.8} zoomType={"hover"} src={this.state.previewImg} zoomSrc={this.state.previewImg} />
 
 
                                              <Container className="my-3">
@@ -443,7 +443,7 @@ class ProductDetails extends Component {
 
                                         <Col className="" md={6} lg={6} sm={12} xs={12}>
 
-                                             {/* <ReviewList code={product_code} /> */}
+                                             <ReviewList code={product_code} />
 
                                         </Col>
                                    </Row>
