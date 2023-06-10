@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import AppURL from '../../api/AppURL';
 import axios from 'axios'
 import parse from 'html-react-parser';

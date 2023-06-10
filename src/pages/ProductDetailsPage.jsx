@@ -4,7 +4,7 @@ import FooterMobile from '../components/common/FooterMobile'
 import NavMenuDesktop from '../components/common/NavMenuDesktop'
 import NavMenuMobile from '../components/common/NavMenuMobile'
 import ProductDetails from '../components/ProductDetails/ProductDetails'
-import SuggestedProduct from '../components/ProductDetails/SuggestedProduct'
+// import SuggestedProduct from '../components/ProductDetails/SuggestedProduct'
 import AppURL from '../api/AppURL'
 import axios from 'axios'
 import SliderLoading from '../components/PlaceHolder/SliderLoading'
@@ -36,6 +36,9 @@ class ProductDetailsPage extends Component {
      }
 
      render() {
+
+          const User = this.props.user;
+
           if (this.state.mainDiv == "d-none") {
 
                return (
@@ -76,7 +79,7 @@ class ProductDetailsPage extends Component {
                               <NavMenuMobile />
                          </div>
 
-                         <ProductDetails data={this.state.ProductData} />
+                         <ProductDetails data={this.state.ProductData} user={User} />
 
 
                          <div className="Desktop">
