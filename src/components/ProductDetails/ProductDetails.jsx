@@ -157,40 +157,36 @@ class ProductDetails extends Component {
 
 
 
+     addToFav = () => {
+          this.setState({ addToFav: "Adding..." })
+          let productCode = this.state.productCode;
+          let email = this.props.user.email;
 
+          if (!localStorage.getItem('token')) {
+               cogoToast.warn('Please You have to Login First', { position: 'top-right' });
+          }
+          else {
 
+               axios.get(AppURL.AddFavourite(productCode, email)).then(response => {
+                    if (response.data === 1) {
+                         cogoToast.success("Product Is now in Favourite", { position: 'top-right' });
+                         this.setState({ addToFav: "Favourite" })
 
+                    }
+                    else {
+                         cogoToast.error("Your Request is not done ! Try Aagain", { position: 'top-right' });
+                         this.setState({ addToFav: "Favourite" })
+                    }
 
-     // addToFav = () => {
-     //      this.setState({ addToFav: "Adding..." })
-     //      let productCode = this.state.productCode;
-     //      let email = this.props.user.email;
+               }).catch(error => {
+                    cogoToast.error("Your Request is not done ! Try Aagain", { position: 'top-right' });
+                    this.setState({ addToFav: "Favourite" })
 
-     //      if (!localStorage.getItem('token')) {
-     //           cogoToast.warn('Please You have to Login First', { position: 'top-right' });
-     //      }
-     //      else {
+               });
 
-     //           axios.get(AppURL.AddFavourite(productCode, email)).then(response => {
-     //                if (response.data === 1) {
-     //                     cogoToast.success("Product Is not in Favourite", { position: 'top-right' });
-     //                     this.setState({ addToFav: "Favourite" })
+          }
 
-     //                }
-     //                else {
-     //                     cogoToast.error("Your Request is not done ! Try Aagain", { position: 'top-right' });
-     //                     this.setState({ addToFav: "Favourite" })
-     //                }
-
-     //           }).catch(error => {
-     //                cogoToast.error("Your Request is not done ! Try Aagain", { position: 'top-right' });
-     //                this.setState({ addToFav: "Favourite" })
-
-     //           });
-
-     //      }
-
-     // } 
+     }
 
 
 
