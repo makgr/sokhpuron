@@ -7,32 +7,33 @@ import NavMenuMobile from '../components/common/NavMenuMobile'
 
 class CartPage extends Component {
 
-     componentDidMount(){
-          window.scroll(0,0)
+     componentDidMount() {
+          window.scroll(0, 0)
      }
 
      render() {
+          const User = this.props.user;
           return (
-              <Fragment> 
-               <div className="Desktop">
-                <NavMenuDesktop /> 
-               </div>
+               <Fragment>
+                    <div className="Desktop">
+                         <NavMenuDesktop />
+                    </div>
 
-               <div className="Mobile">
-               <NavMenuMobile />  
-               </div>                       
+                    <div className="Mobile">
+                         <NavMenuMobile />
+                    </div>
 
-               <Cart /> 
-               
-               <div className="Desktop">
-               <FooterDesktop/>
-               </div>
+                    <Cart user={User} />
 
-               <div className="Mobile">
-               <FooterMobile/>
-               </div>
-               
-          </Fragment>
+                    <div className="Desktop">
+                         <FooterDesktop />
+                    </div>
+
+                    <div className="Mobile">
+                         <FooterMobile />
+                    </div>
+
+               </Fragment>
           )
      }
 }

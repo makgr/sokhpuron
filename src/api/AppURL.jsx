@@ -60,6 +60,10 @@ class AppURL {
         return this.BaseURL + "/favouriteremove/" + product_code + "/" + email;
     }
 
+    static CartList(email) {
+        return this.BaseURL + "/cartlist/" + email;
+    }
+
 }
 
 export default AppURL
