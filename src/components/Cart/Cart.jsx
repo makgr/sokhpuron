@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { Navbar, Container, Row, Col, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import AppURL from '../../api/AppURL';
-import Product1 from '../../assets/images/product/product1.png'
 import axios from 'axios'
 import cogoToast from 'cogo-toast';
 import { Redirect } from 'react-router-dom';
