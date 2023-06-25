@@ -21,6 +21,7 @@ import ProfilePage from '../pages/ProfilePage';
 import AppURL from '../api/AppURL';
 import axios from 'axios'
 import NavMenuDesktop from '../components/common/NavMenuDesktop';
+import OrderListPage from '../pages/OrderListPage';
 
 class AppRoute extends Component {
 
@@ -67,6 +68,7 @@ class AppRoute extends Component {
           <Route exact path="/productcategory/:category" render={(props) => <ProductCategoryPage {...props} key={Date.now()} />} />
           <Route exact path="/productsubcategory/:category/:subcategory" render={(props) => <ProductSubCategoryPage {...props} key={Date.now()} />} />
           <Route exact path="/productbysearch/:searchkey" render={(props) => <SearchPage {...props} key={Date.now()} />} />
+          <Route exact path="/orderlist" render={(props) => <OrderListPage {...props} key={Date.now()} />} />
         </Switch>
       </Fragment>
     )

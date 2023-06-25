@@ -258,12 +258,12 @@ class Cart extends Component {
                                                             <label className="form-label">Choose City</label>
                                                             <select onChange={this.cityOnChange} className="form-control">
                                                                  <option value="">Choose</option>
-                                                                 <option value="Dhaka">Assam</option>
-                                                                 <option value="Dhaka">Bihar </option>
-                                                                 <option value="Dhaka">Goa </option>
-                                                                 <option value="Dhaka">Gujarat </option>
-                                                                 <option value="Dhaka">Himachal Pradesh </option>
-                                                                 <option value="Dhaka">Punjab  </option>
+                                                                 <option value="Dhaka">Dhaka</option>
+                                                                 <option value="Chittagong">Chittagong</option>
+                                                                 <option value="Rajshahi">Rajshahi</option>
+                                                                 <option value="Mymensingh">Mymensingh</option>
+                                                                 <option value="Jamalpur">Jamalpur</option>
+                                                                 <option value="Rangpur">Rangpur</option>
                                                             </select>
                                                        </div>
                                                        <div className="col-md-12 p-1 col-lg-12 col-sm-12 col-12">
@@ -271,7 +271,7 @@ class Cart extends Component {
                                                             <select onChange={this.paymentMethodOnChange} className="form-control">
                                                                  <option value="">Choose</option>
                                                                  <option value="Cash On Delivery">Cash On Delivery</option>
-                                                                 <option value="Cash On Delivery">Stripe</option>
+                                                                 <option value="Stripe">Stripe</option>
                                                             </select>
                                                        </div>
                                                        <div className="col-md-12 p-1 col-lg-12 col-sm-12 col-12">
