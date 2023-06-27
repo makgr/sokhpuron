@@ -93,58 +93,58 @@ class ProductDetails extends Component {
 
 
 
-     // orderNow = () => {
+     orderNow = () => {
 
-     //      let isSize = this.state.isSize;
-     //      let isColor = this.state.isColor;
-     //      let color = this.state.color;
-     //      let size = this.state.size;
-     //      let quantity = this.state.quantity;
-     //      let productCode = this.state.productCode;
-     //      let email = this.props.user.email;
+          let isSize = this.state.isSize;
+          let isColor = this.state.isColor;
+          let color = this.state.color;
+          let size = this.state.size;
+          let quantity = this.state.quantity;
+          let productCode = this.state.productCode;
+          let email = this.props.user.email;
 
-     //      if (isColor === "YES" && color.length === 0) {
-     //           cogoToast.error('Please Select Color', { position: 'top-right' });
-     //      }
-     //      else if (isSize === "YES" && size.length === 0) {
-     //           cogoToast.error('Please Select Size', { position: 'top-right' });
-     //      }
-     //      else if (quantity.length === 0) {
-     //           cogoToast.error('Please Select Quantity', { position: 'top-right' });
-     //      }
-     //      else if (!localStorage.getItem('token')) {
-     //           cogoToast.warn('Please You have to Login First', { position: 'top-right' });
-     //      }
-     //      else {
-     //           this.setState({ addToCart: "Adding..." })
-     //           let MyFormData = new FormData();
-     //           MyFormData.append("color", color);
-     //           MyFormData.append("size", size);
-     //           MyFormData.append("quantity", quantity);
-     //           MyFormData.append("product_code", productCode);
-     //           MyFormData.append("email", email);
+          if (isColor === "YES" && color.length === 0) {
+               cogoToast.error('Please Select Color', { position: 'top-right' });
+          }
+          else if (isSize === "YES" && size.length === 0) {
+               cogoToast.error('Please Select Size', { position: 'top-right' });
+          }
+          else if (quantity.length === 0) {
+               cogoToast.error('Please Select Quantity', { position: 'top-right' });
+          }
+          else if (!localStorage.getItem('token')) {
+               cogoToast.warn('Please You have to Login First', { position: 'top-right' });
+          }
+          else {
+               this.setState({ addToCart: "Adding..." })
+               let MyFormData = new FormData();
+               MyFormData.append("color", color);
+               MyFormData.append("size", size);
+               MyFormData.append("quantity", quantity);
+               MyFormData.append("product_code", productCode);
+               MyFormData.append("email", email);
 
-     //           axios.post(AppURL.addToCart, MyFormData).then(response => {
-     //                if (response.data === 1) {
-     //                     cogoToast.success("Product Added Successfully", { position: 'top-right' });
-     //                     this.setState({ OrderNow: "Order Now" })
-     //                     this.setState({ PageRedirectStauts: true })
-     //                }
-     //                else {
-     //                     cogoToast.error("Your Request is not done ! Try Aagain", { position: 'top-right' });
-     //                     this.setState({ addToCart: "Add To Cart" })
-     //                }
+               axios.post(AppURL.addToCart, MyFormData).then(response => {
+                    if (response.data === 1) {
+                         cogoToast.success("Product Added Successfully", { position: 'top-right' });
+                         this.setState({ OrderNow: "Order Now" })
+                         this.setState({ PageRedirectStauts: true })
+                    }
+                    else {
+                         cogoToast.error("Your Request is not done ! Try Aagain", { position: 'top-right' });
+                         this.setState({ addToCart: "Add To Cart" })
+                    }
 
-     //           }).catch(error => {
-     //                cogoToast.error("Your Request is not done ! Try Aagain", { position: 'top-right' });
-     //                this.setState({ addToCart: "Add To Cart" })
+               }).catch(error => {
+                    cogoToast.error("Your Request is not done ! Try Aagain", { position: 'top-right' });
+                    this.setState({ addToCart: "Add To Cart" })
 
-     //           });
+               });
 
-     //      }
+          }
 
 
-     // }  
+     }
 
      PageRedirect = () => {
           if (this.state.PageRedirectStauts === true) {
